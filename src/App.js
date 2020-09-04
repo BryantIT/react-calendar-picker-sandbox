@@ -64,31 +64,42 @@ console.log(timeSamples)
     alert('Please choose a different day.')
   };
 
-  const handleClick = (t) => {
+  const handleClick = t => {
     console.log(t)
+    setSelectedTime(t)
+  }
+
+  const handleReset = () => {
+    setSelectedDay(null)
+    setSelectedTime(null)
+    setDisplayTimes(null)
   }
 
   return (
-    <Grid container direction="row" justify="flex-start" alignItems="center" spacing={5}>
-      <Calendar
-        value={selectedDay}
-        onChange={handleDayChange}
-        minimumDate={utils().getToday()}
-        disabledDays={disabledDays}
-        onDisabledDayError={handleDisabledSelect}
-        colorPrimary="#0fbcf9"
-        shouldHighlightWeekends
-      />
-      <Grid item xs={3} m={3}>
-            { displayTimes ? displayTimes.sort(function(a, b) { return a - b }).map(t => (
-              // Mapping and Sorting time array to display buttons
-              <Box m={2}>
-                <Button onClick={() => handleClick(t)} key="time" variant="contained">{t}</Button>
-              </Box>
-            )) : ''}
-          </Grid>
-    <h1>Date: { selectedDay ? selectedDay.day + '/' + selectedDay.month + '/' + selectedDay.year  : "Not Selected" }</h1>
-</Grid>
+    <div>
+      <Grid container direction="row" justify="flex-start" alignItems="center" spacing={5}>
+        <Calendar
+          value={selectedDay}
+          onChange={handleDayChange}
+          minimumDate={utils().getToday()}
+          disabledDays={disabledDays}
+          onDisabledDayError={handleDisabledSelect}
+          colorPrimary="#0fbcf9"
+          shouldHighlightWeekends
+        />
+        <Grid item xs={3} m={3}>
+              { displayTimes ? displayTimes.sort(function(a, b) { return a - b }).map(t => (
+                // Mapping and Sorting time array to display buttons
+                <Box m={2}>
+                  <Button onClick={() => handleClick(t)} key={'time'} variant="contained">{t}</Button>
+                </Box>
+              )) : ''}
+            </Grid>
+  </Grid>
+  <h1>Date: { selectedDay ? selectedDay.day + '/' + selectedDay.month + '/' + selectedDay.year  : "Not Selected" }</h1>
+  <h1>Time: { selectedTime ? selectedTime : "Not Selected" }</h1>
+  <Button onClick={() => handleReset()} key="time" variant="contained">Reset</Button>
+    </div>
   );
 }
 
