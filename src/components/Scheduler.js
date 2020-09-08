@@ -57,7 +57,7 @@ function getSampleTimes (arr, size) {
 }
 
 // Result of shuffle
-const timeSamples = getSampleTimes(availableTimes, 10)
+const timeSamples = getSampleTimes(availableTimes, 6)
 console.log(timeSamples)
 
   const handleDayChange = day => {
@@ -70,7 +70,7 @@ console.log(timeSamples)
     alert('Please choose a different day.')
   };
 
-  const handleClick = t => {
+  const handleTimeClick = t => {
     console.log(t)
     setSelectedTime(t)
     setDisplayTimes(null)
@@ -98,14 +98,14 @@ console.log(timeSamples)
               { displayTimes ? displayTimes.sort(function(a, b) { return a - b }).map(t => (
                 // Mapping and Sorting time array to display buttons
                 <Box m={2}>
-                  <Button onClick={() => handleClick(t)} key={'time'} variant="contained">{t}</Button>
+                  <Button onClick={() => handleTimeClick(t)} key={'time'} variant="contained">{t}</Button>
                 </Box>
               )) : ''}
             </Grid>
   </Grid>
   <h1>Date: { selectedDay ? selectedDay.day + '/' + selectedDay.month + '/' + selectedDay.year  : "Not Selected" }</h1>
   <h1>Time: { selectedTime ? selectedTime : "Not Selected" }</h1>
-  <Button onClick={() => handleReset()} key="time" variant="contained">Reset</Button>
+  <Button onClick={() => handleReset()} key="time" variant="contained">Submit</Button>
     </Container>
   );
 }
