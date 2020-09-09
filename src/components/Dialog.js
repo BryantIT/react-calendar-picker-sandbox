@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Scheduler from './Scheduler'
 // For Calendar
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
-import { DatePicker, Calendar, utils } from 'react-modern-calendar-datepicker';
-import { Container, Grid, IconButton, List, ListItem, ListItemText, ListItemAvatar, Avatar, Button, Box, DialogContentText, Dialog, DialogActions, DialogContent, DialogTitle, Slide} from '@material-ui/core'
+import { Calendar, utils } from 'react-modern-calendar-datepicker';
+import { Container, Grid, Button, Box, DialogContentText, Dialog, DialogActions, DialogContent, DialogTitle, Slide} from '@material-ui/core'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -121,7 +121,7 @@ export default function AlertDialogSlide() {
     redirectConfirm ?
     <div>
       <h1>Thank you for scheduling an assessment</h1>
-      <h2>Your schedule is below</h2>
+      <h2>Your scheduled assessment time is below</h2>
       <p>{submittedDay.day}/{submittedDay.month}/{submittedDay.year} at: {submittedTime}</p>
     </div>
     :
