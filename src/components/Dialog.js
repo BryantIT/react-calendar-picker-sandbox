@@ -108,7 +108,7 @@ export default function AlertDialogSlide() {
 
 
 
-  // Dialog Start
+  // Dialog Handler Start
   const handleClickOpen = () => {
     setOpen(true);
   };
